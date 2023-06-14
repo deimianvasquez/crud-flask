@@ -100,6 +100,61 @@ def new_user():
             return jsonify({"message": "user exist"}), 400
 
 
+@app.route('/user/<int:user_id>', methods=["PUT"])
+def update_user(user_id=None):
+    if request.method == "PUT":
+        if user_id is None:
+            return jsonify({"message": "wrong property"}), 400
+
+        data = request.json
+        if data.get("name") is None:
+            return jsonify({"message": "wrong property"}), 400
+        if data.get("lastname") is None:
+            return jsonify({"message": "wrong property"}), 400
+
+        data["name"] = data["name"].strip()
+
+        if len(data["name"]) < 1:
+            return jsonify({"message": "wrong property"}), 400
+        if len(data["lastname"]) < 1:
+            return jsonify({"message": "wrong property"}), 400
+
+        user = User()
+        update_user = user.query.get(user_id)
+
+        if update_user is None:
+            return jsonify({"message": "Not found"}), 404
+        else:
+            update_user.name = data["name"]
+            update_user.lastname = data["lastname"]
+
+            try:
+                db.session.commit()
+            except Exception as error:
+                return jsonify({"message": f"error {error.args}"}), 500
+        return jsonify(data), 201
+
+
+@app.route("/user/<int:user_id>", methods=["DELETE"])
+def delete_user(user_id=None):
+    if request.method == "DELETE":
+        if user_id is None:
+            return jsonify({"message": "wrong property"}), 400
+
+        user = User.query.get(user_id)
+        if user is None:
+            return jsonify({"message": "Not found"}), 404
+        else:
+            db.session.delete(user)
+
+            try:
+                db.session.commit()
+                return jsonify([]), 204
+
+            except Exception as error:
+                return jsonify({"message": f"error {error.args}"}), 500
+
+
 # this only runs if `$ python src/app.py` is executed
 if __name__ == '__main__':
     PORT = int(os.environ.get('PORT', 3000))

@@ -8,12 +8,12 @@
     "method": "POST",
     "sortNum": 10000,
     "created": "2023-06-13T00:41:07.699Z",
-    "modified": "2023-06-13T00:59:31.948Z",
+    "modified": "2023-06-14T22:15:12.777Z",
     "headers": [],
     "params": [],
     "body": {
       "type": "json",
-      "raw": "{\n  \"name\":\"Deimian\",\n  \"lastname\":\"Vásquez\",\n  \"email\":\"deimian@gmail.com15\"\n}",
+      "raw": "{\n  \"name\":\"Deimian\",\n  \"lastname\":\"Vásquez\",\n  \"email\":\"deimian@gmail.com16\"\n}",
       "form": []
     },
     "tests": []
@@ -28,6 +28,39 @@
     "sortNum": 20000,
     "created": "2023-06-13T00:47:29.087Z",
     "modified": "2023-06-13T00:47:45.867Z",
+    "headers": [],
+    "params": [],
+    "tests": []
+  },
+  {
+    "_id": "3cdc1039-d5b5-4492-a46d-17c9517ce49c",
+    "colId": "fa1dff8b-e3d6-4b3c-9d04-7ed382becfe2",
+    "containerId": "",
+    "name": "update_user",
+    "url": "http://127.0.0.1:3000/user/1",
+    "method": "PUT",
+    "sortNum": 30000,
+    "created": "2023-06-14T22:17:40.245Z",
+    "modified": "2023-06-14T22:50:46.366Z",
+    "headers": [],
+    "params": [],
+    "body": {
+      "type": "json",
+      "raw": "{\n    \"email\": \"deimian@gmail.com\",\n    \"lastname\": \"Moret\",\n    \"name\": \"   d\"\n  }",
+      "form": []
+    },
+    "tests": []
+  },
+  {
+    "_id": "931599b2-ad1f-4b87-8796-cf698da0c815",
+    "colId": "fa1dff8b-e3d6-4b3c-9d04-7ed382becfe2",
+    "containerId": "",
+    "name": "delete_user",
+    "url": "http://127.0.0.1:3000/user/4",
+    "method": "DELETE",
+    "sortNum": 40000,
+    "created": "2023-06-14T22:54:56.886Z",
+    "modified": "2023-06-14T22:56:46.007Z",
     "headers": [],
     "params": [],
     "tests": []

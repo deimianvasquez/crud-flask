@@ -21,5 +21,6 @@ class User(db.Model):
             "name": self.name,
             "lastname": self.lastname,
             "email": self.email,
-            "create_at": self.created_at
+            "create_at": self.created_at,
+            "updated_at": self.updated_at
         }
